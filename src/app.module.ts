@@ -12,7 +12,7 @@ import { ImapModule } from './imap/imap.module';
     ConfigModule.forRoot({ isGlobal: true }),
 
     // ✅ Mongoose connection must be registered here
-    MongooseModule.forRoot(process.env.MONGODB_URI || 'mongodb://localhost:27017/lucidgrowth'),
+    MongooseModule.forRoot(process.env.MONGODB_URI!),
 
     EmailsModule,ImapModule],
   controllers: [AppController],

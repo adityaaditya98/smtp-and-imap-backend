@@ -12,6 +12,7 @@ export class EmailsController {
   }
   @Post('send')
   async sendTestEmail(@Body() email : Email) {
+    console.log("sending Email");
     try{
     let savedEmail = await this.emailsService.sendMail(email.to, email.subject);
     savedEmail = {

@@ -13,4 +13,3 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const httpAdapter = app.getHttpAdapter();
   httpAdapter.getInstance()(req, res); // use the NestJS HTTP adapter to handle the request
 }
-

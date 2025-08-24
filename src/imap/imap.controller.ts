@@ -7,7 +7,7 @@ export class ImapController {
 
   @Get()
   async getAll() {
-    return this.imapService.getAll();
+    return await this.imapService.getAll();
   }
 
   @Get('latest')

@@ -24,6 +24,12 @@ export class ImapEmail {
   esp: string;
 
   @Prop()
+    body: string; // plain text content
+
+    @Prop()
+    bodyHtml: string; // html content
+
+  @Prop()
   rawHeaders: string;
 
   @Prop()

@@ -59,19 +59,21 @@ export class ImapService implements OnModuleInit {
         msg.once('end', async () => {
           try {
             const parsed = await simpleParser(buffer);
-
             const emailData = {
-              messageId: parsed.messageId || attributes.uid || '',
-              subject: parsed.subject || '',
-              from: parsed.from?.text || '',
-              to: parsed.to?.text || '',
-              receivingChain: buffer.match(/Received: .*/g) || [],
-              esp: this.detectESP(parsed.headers.toString() + parsed.from?.text),
-              rawHeaders: buffer,
-              date: parsed.date || new Date(),
-              seen: false,
-              attachments: (parsed.attachments || []).map((a) => a.filename || ''),
-            };
+  messageId: parsed.messageId || attributes.uid || '',
+  subject: parsed.subject || '',
+  from: parsed.from?.text || '',
+  to: parsed.to?.text || '',
+  receivingChain: buffer.match(/Received: .*/g) || [],
+  esp: this.detectESP(parsed.headers.toString() + parsed.from?.text),
+  rawHeaders: buffer,
+  date: parsed.date || new Date(),
+  seen: false,
+  attachments: (parsed.attachments || []).map((a) => a.filename || ''),
+
+  body: parsed.text || '',       // ✅ add plain text
+  bodyHtml: parsed.html || '',   // ✅ add html version
+};
 
             await new this.imapEmailModel(emailData).save();
             console.log(`✅ New email stored: ${parsed.subject}, ESP: ${emailData.esp}`);

@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:4000', // React dev
-      'https://email-service-frontend-basic-pmkr5t5t8.vercel.app', // your deployed frontend
+      // 'https://email-service-frontend-basic-pmkr5t5t8.vercel.app', // your deployed frontend
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // only if backend uses cookies/auth
